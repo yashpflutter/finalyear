@@ -7,10 +7,10 @@ In such cases Employee can use its personal laptop ,android devices ,and IOS dev
 This Application will handle such conditons and aslo chek upon the security , initgirity of the data of orgainzations 
 This applications eill aslo be Inner theft proof 
 -By 
-Yash Nilkanth Patil    "yashpatil13.skn.comp@gmail.com"
-Aditya Sanjay Nirmal   "adityanirmal.skn.comp@gmail.com"
-Pranoti Ankush Namdas  "pranotinamdas.skn.comp@gmail.com"
-Omkar Sarjerao Patil    "omkarpatil.skn.comp@gmail.com"
+Yash Nilkanth Patil    yashpatil13.skn.comp@gmail.com
+Aditya Sanjay Nirmal   adityanirmal.skn.comp@gmail.com
+Pranoti Ankush Namdas  pranotinamdas.skn.comp@gmail.com
+Omkar Sarjerao Patil    omkarpatil.skn.comp@gmail.com
 
 We have Published a paper for this Project 
 Link to Paper :
