@@ -110,8 +110,8 @@ class _ProgressDetailsPageState extends State<ProgressDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final double progressSize = MediaQuery.of(context).size.width *
-        0.5; // Size of the progress indicator
+    // final double progressSize = MediaQuery.of(context).size.width *
+    0.5; // Size of the progress indicator
     final double buttonHeight = MediaQuery.of(context).size.height *
         0.06; // Button height based on screen size
 

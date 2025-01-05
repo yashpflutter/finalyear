@@ -1,0 +1,3 @@
+snack bar 
+
+scaffold message .of(context)    to show a pop up in bottom in the app 
