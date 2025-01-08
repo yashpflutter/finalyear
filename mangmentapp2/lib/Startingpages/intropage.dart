@@ -47,7 +47,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         backgroundColor: Colors.blue,
                         child: const Text(">"),
                         onPressed: () {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                               builder: (context) => const LoginPage(),
@@ -68,7 +68,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               child: SmoothPageIndicator(
                 controller: _controller,
                 count: 3,
-                effect: WormEffect(
+                effect: const WormEffect(
                   dotColor: Colors.grey,
                   activeDotColor: Colors.black,
                   dotHeight: 12,

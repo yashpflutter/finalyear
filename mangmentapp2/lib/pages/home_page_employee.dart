@@ -41,7 +41,7 @@ class _HomePageempState extends State<HomePageemp> {
             ]),
           ),
           drawer: MyDrawer(pageno: levelno),
-          floatingActionButton: FloatingActionButton(
+          /* floatingActionButton: FloatingActionButton(
             onPressed: () {
               // Define the action here
             },
@@ -54,7 +54,7 @@ class _HomePageempState extends State<HomePageemp> {
             ),
             child: const Icon(Icons.chat_bubble_outline_outlined,
                 color: Colors.black),
-          ),
+          ),*/
           body: TabBarView(
             children: [
               FirstPage(),

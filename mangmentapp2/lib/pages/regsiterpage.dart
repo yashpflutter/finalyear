@@ -159,6 +159,7 @@ class _RegisterpageState extends State<Registerpage> {
               const SizedBox(height: 25),
 
               MyTextField(
+
                   //height: double.maxFinite,
                   //width: double.maxFinite,
                   stylecolor: Colors.white,

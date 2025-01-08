@@ -5,6 +5,8 @@ import 'package:project_handling_app/components/my_textfield.dart';
 import 'package:project_handling_app/pages/regsiterpage.dart';
 
 import 'package:project_handling_app/pages/syncpage.dart';
+import 'package:project_handling_app/providers/my_login_provider.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -115,14 +117,32 @@ class _LoginPageState extends State<LoginPage> {
               buttoncolor: Colors.lightBlue,
               text: "Login",
               onTap: () {
+                if (_emailcontroller.text.trim().isNotEmpty &&
+                    _pwcontroller.text.trim().isNotEmpty) {
+                  Provider.of<loginProvider>(context, listen: false).setUser(
+                      _emailcontroller.text.trim(), _pwcontroller.text.trim());
+
+                  int valuetosend = jobno;
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => LoadingPage(data: valuetosend),
+                    ),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("Please fill all fields")),
+                  );
+                }
+
                 // Navigate to LoadingPage and pass the selected jobno
-                int valuetosend = jobno;
+                /* int valuetosend = jobno;
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => LoadingPage(data: valuetosend),
                   ),
-                );
+                );*/
               },
             ),
             const SizedBox(height: 25),
