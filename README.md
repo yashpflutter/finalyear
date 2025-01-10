@@ -6,6 +6,8 @@ Recentily the big windowss outage has taken place in this outage many of the ser
 In such cases Employee can use its personal laptop ,android devices ,and IOS devices fro temporory use case 
 This Application will handle such conditons and aslo chek upon the security , initgirity of the data of orgainzations 
 This applications eill aslo be Inner theft proof 
+
+Lead by- Yash Nilkanth Patil 
 -By 
 Yash Nilkanth Patil    yashpatil13.skn.comp@gmail.com
 Aditya Sanjay Nirmal   adityanirmal.skn.comp@gmail.com
