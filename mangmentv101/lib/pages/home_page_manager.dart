@@ -1,12 +1,10 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:project_handling_app/components/my_drawer.dart';
-import 'package:project_handling_app/pages/common/notificationmain.dart';
-import 'package:project_handling_app/pages/manager/firstpage.dart';
-import 'package:project_handling_app/pages/common/secondpage.dart';
-import 'package:project_handling_app/pages/manager/thirdpage.dart';
-import 'package:project_handling_app/pages/common/fourthpage.dart';
+import 'package:mangmentv101/components/my_drawer.dart';
+import 'package:mangmentv101/pages/common/notificationmain.dart';
+import 'package:mangmentv101/pages/manager/firstpage.dart';
+import 'package:mangmentv101/pages/common/secondpage.dart';
+import 'package:mangmentv101/pages/manager/thirdpage.dart';
+import 'package:mangmentv101/pages/common/fourthpage.dart';
 
 class HomePagemanager extends StatefulWidget {
   const HomePagemanager({super.key});

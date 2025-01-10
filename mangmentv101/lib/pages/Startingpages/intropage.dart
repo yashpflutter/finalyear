@@ -1,25 +1,20 @@
 import 'package:flutter/material.dart';
 
-import 'package:project_handling_app/pages/login_page.dart';
+import 'package:mangmentv101/pages/login_page.dart';
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingScreen extends StatefulWidget {
+  const OnboardingScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _OnboardingScreenState createState() => _OnboardingScreenState();
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _controller = PageController();
   bool isFinished = false;
-
-  void _handleSwipe() {
-    Future.delayed(Duration(seconds: 2), () {
-      setState(() {
-        isFinished = true;
-      });
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,8 +83,9 @@ class OnboardingPage extends StatelessWidget {
   final String title;
   final String description;
   final Widget widgets;
-  OnboardingPage(
-      {required this.color,
+  const OnboardingPage(
+      {super.key,
+      required this.color,
       required this.title,
       required this.description,
       required this.widgets});
