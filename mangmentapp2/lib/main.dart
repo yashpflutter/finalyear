@@ -3,9 +3,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:project_handling_app/pages/login_page.dart';
 import 'Startingpages/splash_screen.dart'; // Import the splash screen
 import 'package:project_handling_app/Startingpages/intropage.dart';
+import 'package:provider/provider.dart';
+import 'package:project_handling_app/providers/my_login_provider.dart';
+import 'dart:js';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => loginProvider()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

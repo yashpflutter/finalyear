@@ -2,6 +2,8 @@
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:project_handling_app/providers/my_login_provider.dart';
 
 class FourthPage extends StatefulWidget {
   const FourthPage({super.key});
@@ -27,7 +29,7 @@ class _FourthPageState extends State<FourthPage> {
   @override
   Widget build(BuildContext context) {
     double profileSize = MediaQuery.of(context).size.width * 0.3;
-
+    final userProvider = Provider.of<loginProvider>(context);
     return Scaffold(
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
@@ -67,14 +69,21 @@ class _FourthPageState extends State<FourthPage> {
             const SizedBox(height: 20),
 
             // Profile Details
-            const Column(
+            Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 8.0),
                   child: Text(
-                    "Name: somethings in couts",
+                    "Name: ",
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.0),
+                  child: Text(
+                    "Email :${userProvider.email}",
                     style: TextStyle(fontSize: 16),
                   ),
                 ),
@@ -95,7 +104,7 @@ class _FourthPageState extends State<FourthPage> {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 8.0),
                   child: Text(
-                    "Specialization: some things in couts ",
+                    "password: ${userProvider.password} ",
                     style: TextStyle(fontSize: 16),
                   ),
                 ),
@@ -110,16 +119,16 @@ class _FourthPageState extends State<FourthPage> {
                 color: Colors.grey[300],
                 borderRadius: BorderRadius.circular(8.0),
               ),
-              child: const Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Contact details",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text("Phone no.: +91 123456789"),
-                  Text("Email id: xyz@gmail.com"),
+                  Text("Email id: ${userProvider.email}"),
                 ],
               ),
             ),

@@ -47,7 +47,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         backgroundColor: Colors.blue,
                         child: const Text(">"),
                         onPressed: () {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                               builder: (context) => const LoginPage(),
