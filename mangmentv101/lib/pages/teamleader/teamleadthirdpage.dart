@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ThirdPage extends StatelessWidget {
-  const ThirdPage({super.key});
+class TLThirdPage extends StatelessWidget {
+  const TLThirdPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class ThirdPage extends StatelessWidget {
               },
             ),
           ),
-          Divider(), // To separate the two lists
+          const Divider(), // To separate the two lists
           Expanded(
             child: ListView.builder(
               itemCount: 10, // Number of items

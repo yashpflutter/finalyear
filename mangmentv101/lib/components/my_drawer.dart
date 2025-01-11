@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:mangmentv101/components/my_settingpage.dart';
-
-import 'package:mangmentv101/pages/home_page_employee.dart';
-import 'package:mangmentv101/pages/home_page_manager.dart';
-import 'package:mangmentv101/pages/home_page_teamlead.dart';
+import 'package:mangmentv101/pages/loginregister/login_page.dart';
+import 'package:mangmentv101/pages/primarypage.dart';
+import 'package:mangmentv101/provider/credentialprovider/loginprovider.dart';
+import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class MyDrawer extends StatelessWidget {
-  final int pageno;
-  const MyDrawer({super.key, required this.pageno});
+  const MyDrawer({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
+    LoginProvider loginprovider = Provider.of<LoginProvider>(context);
     Widget pagetosend() {
-      if (pageno == 1) {
-        return HomePagemanager();
-      } else if (pageno == 2) {
-        return HomePageteamlead();
+      if (loginprovider.user!.designation == 1) {
+        return HomePage();
+      } else if (loginprovider.user!.designation == 2) {
+        return HomePage();
       } else {
-        return HomePageemp();
+        return HomePage();
       }
     }
 
@@ -123,7 +125,8 @@ class MyDrawer extends StatelessWidget {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginPage()));
               },
             ),
           ],

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:swipe_to/swipe_to.dart';
 
-class notification extends StatefulWidget {
-  const notification({super.key});
+class TLnotification extends StatefulWidget {
+  const TLnotification({super.key});
 
   @override
-  State<notification> createState() => _HomePageempState();
+  State<TLnotification> createState() => _HomePageempState();
 }
 
-class _HomePageempState extends State<notification> {
+class _HomePageempState extends State<TLnotification> {
   @override
   Widget build(BuildContext context) {
     double cardHeight = MediaQuery.of(context).size.height * 0.10;

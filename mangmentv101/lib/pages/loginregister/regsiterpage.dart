@@ -1,8 +1,11 @@
 //import 'package:chatapp/services/auth/auth_serice.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mangmentv101/components/my_textfield.dart';
 import 'package:mangmentv101/components/my_button.dart';
-import 'package:mangmentv101/pages/syncpage.dart';
+import 'package:mangmentv101/pages/loginregister/syncpage.dart';
+import 'package:mangmentv101/provider/credentialprovider/loginprovider.dart';
+import 'package:provider/provider.dart';
 
 class Registerpage extends StatefulWidget {
   const Registerpage({super.key});
@@ -17,9 +20,11 @@ class _RegisterpageState extends State<Registerpage> {
   final TextEditingController _confirmcontroller = TextEditingController();
   final TextEditingController _empidcontroller = TextEditingController();
   final TextEditingController _specialcontroller = TextEditingController();
+  final TextEditingController _namecontroller = TextEditingController();
+  final TextEditingController _phonenocontroller = TextEditingController();
   // final void Function()? onTap;
   String level = "Student";
-  int jobno = 2;
+  int jobno = 0;
 
   /* void register(BuildContext context) async {
     final auth = AuthService();
@@ -54,7 +59,9 @@ class _RegisterpageState extends State<Registerpage> {
         _pwcontroller.text.isEmpty ||
         _confirmcontroller.text.isEmpty ||
         _empidcontroller.text.isEmpty ||
-        _specialcontroller.text.isEmpty) {
+        _specialcontroller.text.isEmpty ||
+        _namecontroller.text.isEmpty ||
+        _phonenocontroller.text.isEmpty) {
       showDialog(
           context: context,
           builder: (context) => AlertDialog(
@@ -63,7 +70,8 @@ class _RegisterpageState extends State<Registerpage> {
                       color: Theme.of(context).colorScheme.primary))));
       return false;
     }
-    /* if (_pwcontroller.text == _confirmcontroller.text) {
+
+    if (_pwcontroller.text == _confirmcontroller.text) {
       showDialog(
           context: context,
           builder: (context) => AlertDialog(
@@ -81,7 +89,8 @@ class _RegisterpageState extends State<Registerpage> {
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.primary))));
       return false;
-    }*/
+    }
+
     return true;
   }
 
@@ -92,6 +101,7 @@ class _RegisterpageState extends State<Registerpage> {
       level = value!; // Set the selected value
       if (level == "Manager") {
         jobno = 1;
+
         print("Team lead selected, jobno = $jobno");
       } else if (level == "Team lead") {
         jobno = 2;
@@ -170,11 +180,24 @@ class _RegisterpageState extends State<Registerpage> {
               ),
 
               const SizedBox(height: 25),
-              //email TextField
+              //name textfield
               MyTextField(
+                inputfromator: [],
+                keyboardtype: TextInputType.text,
+
                 //  height: double.maxFinite,
                 // width: double.maxFinite,
-                stylecolor: Colors.white,
+
+                obscureText: false,
+                hintText: "Name",
+                controller: _namecontroller,
+              ),
+              const SizedBox(height: 25),
+              //email TextField
+              MyTextField(
+                inputfromator: [],
+                //  height: double.maxFinite,
+                // width: double.maxFinite,
                 keyboardtype: TextInputType.emailAddress,
                 obscureText: false,
                 hintText: "Email ",
@@ -183,9 +206,10 @@ class _RegisterpageState extends State<Registerpage> {
               const SizedBox(height: 25),
 
               MyTextField(
+                inputfromator: [],
                 //height: double.maxFinite,
                 //width: double.maxFinite,
-                stylecolor: Colors.white,
+
                 keyboardtype: TextInputType.text,
                 obscureText: true,
                 hintText: "Password",
@@ -193,9 +217,10 @@ class _RegisterpageState extends State<Registerpage> {
               ),
               const SizedBox(height: 25),
               MyTextField(
+                inputfromator: [],
                 //height: double.maxFinite,
                 //width: double.maxFinite,
-                stylecolor: Colors.white,
+
                 keyboardtype: TextInputType.text,
                 obscureText: true,
                 hintText: "Confirm password",
@@ -204,24 +229,17 @@ class _RegisterpageState extends State<Registerpage> {
               const SizedBox(height: 25),
 
               MyTextField(
+                  inputfromator: [
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
                   //height: double.maxFinite,
                   //width: double.maxFinite,
-                  stylecolor: Colors.white,
-                  keyboardtype: TextInputType.text,
+
+                  keyboardtype: TextInputType.number,
                   hintText: "Employee ID",
                   obscureText: false,
                   controller: _empidcontroller),
 
-              const SizedBox(height: 25),
-
-              MyTextField(
-                  //height: double.maxFinite,
-                  //width: double.maxFinite,
-                  stylecolor: Colors.white,
-                  keyboardtype: TextInputType.number,
-                  hintText: "Sepeciality",
-                  obscureText: false,
-                  controller: _specialcontroller),
               const SizedBox(height: 25),
 
               //const SizedBox(height: 25),
@@ -234,14 +252,24 @@ class _RegisterpageState extends State<Registerpage> {
                   onTap: () {
                     int valuetosend = jobno;
 
-                    if (Validation() == true) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  LoadingPage(data: valuetosend)));
-                    }
-                  }),
+                    //    if (Validation() == true) {
+                    Provider.of<LoginProvider>(context, listen: false)
+                        .setUserregter(User(
+                      email: _emailcontroller.text.trim(),
+                      password: _pwcontroller.text.trim(),
+                      name: _namecontroller.text.trim(),
+                      designation: jobno,
+                      empid: int.tryParse(_empidcontroller.text.trim()) ?? 101,
+                    ));
+
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                LoadingPage(data: valuetosend)));
+                  }
+                  //}
+                  ),
               const SizedBox(height: 25),
 
               Row(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 //import 'package:provider/provider.dart';
 
 class MyTextField extends StatelessWidget {
@@ -6,22 +7,26 @@ class MyTextField extends StatelessWidget {
   final bool obscureText;
   final TextEditingController controller;
   final TextInputType keyboardtype;
-  final Color stylecolor;
-  const MyTextField(
-      {super.key,
-      required this.keyboardtype,
-      required this.hintText,
-      required this.obscureText,
-      required this.controller,
-      required this.stylecolor});
+  final FocusNode _focusNode = FocusNode();
+  final List<TextInputFormatter> inputfromator;
+  MyTextField({
+    super.key,
+    required this.keyboardtype,
+    required this.hintText,
+    required this.obscureText,
+    required this.controller,
+    required this.inputfromator,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25.0),
         child: TextField(
+          inputFormatters: inputfromator,
           style: TextStyle(color: Colors.white),
           keyboardType: keyboardtype,
+          focusNode: _focusNode,
           controller: controller,
           obscureText: obscureText,
           decoration: InputDecoration(

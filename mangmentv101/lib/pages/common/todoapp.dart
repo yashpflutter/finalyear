@@ -74,7 +74,8 @@ class _todoappState extends State<todoapp> {
   }
 
   //chcekbox
-  bool valueofbox = false;
+  bool valueofboxpending = false;
+  bool valueofboxdone = true;
   void changethecard(bool valueofbox, ToDoModelClass toDoModelClass) {
     if (valueofbox == true) {
       doneList.add(ToDoModelClass(
@@ -360,12 +361,12 @@ class _todoappState extends State<todoapp> {
                                     children: [
                                       const Spacer(),
                                       Checkbox(
-                                        value: valueofbox,
+                                        value: false,
                                         onChanged: (bool? value) {
                                           setState(() {
-                                            valueofbox = value!;
-                                            changethecard(
-                                                valueofbox, cardList[index]);
+                                            valueofboxpending = value!;
+                                            changethecard(valueofboxpending,
+                                                cardList[index]);
                                           });
                                         },
                                       ),
@@ -480,12 +481,12 @@ class _todoappState extends State<todoapp> {
                                     children: [
                                       const Spacer(),
                                       Checkbox(
-                                        value: valueofbox,
+                                        value: true,
                                         onChanged: (bool? value) {
                                           setState(() {
-                                            valueofbox = value!;
-                                            changethecard(
-                                                valueofbox, doneList[index]);
+                                            valueofboxdone = value!;
+                                            changethecard(valueofboxdone,
+                                                doneList[index]);
                                           });
                                         },
                                       ),

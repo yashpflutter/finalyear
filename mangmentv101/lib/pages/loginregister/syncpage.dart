@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:mangmentv101/pages/home_page_employee.dart';
-import 'package:mangmentv101/pages/home_page_manager.dart';
-import 'package:mangmentv101/pages/home_page_teamlead.dart';
+import 'package:mangmentv101/pages/primarypage.dart';
 
 class LoadingPage extends StatefulWidget {
   final int data;
@@ -19,28 +17,11 @@ class _LoadingState extends State<LoadingPage> {
 
     // Start the timer when the page is initialized
     Timer(Duration(seconds: 1), () {
-      if (widget.data == 1) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  const HomePagemanager()), // Navigate to the HomePage
-        );
-      } else if (widget.data == 2) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  const HomePageteamlead()), // Navigate to the HomePage
-        );
-      } else if (widget.data == 3) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  const HomePageemp()), // Navigate to the HomePage
-        );
-      }
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) => const HomePage()), // Navigate to the HomePage
+      );
     });
   }
 
@@ -89,7 +70,7 @@ class _LoadingState extends State<LoadingPage> {
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                 // Add the Google API for Firebase
                 child: const Text(
-                  'Syncing your Google account',
+                  'Syncing your Data',
                   style: TextStyle(
                     fontSize: 16,
                     color: Colors.black, // Text color on a white container

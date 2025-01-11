@@ -30,6 +30,8 @@ class _FirstPageState extends State<SecondPage> {
         body: SingleChildScrollView(
             child: Column(
           children: [
+            Text("TO DO ",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
             GestureDetector(
               onDoubleTap: () async {
                 if (_selectedDay == _focusedDay) {
@@ -79,23 +81,27 @@ class _FirstPageState extends State<SecondPage> {
                 ),
               ),
             ),
-            SizedBox(
-                height: 300, // Set a fixed height for the ListView
-                child: ListView.builder(
-                  itemCount: events[_selectedDay]?.length ?? 0,
-                  itemBuilder: (context, index) {
-                    String eventName = events[_selectedDay]![index];
-                    return Card(
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 8, horizontal: 16),
-                      child: ListTile(
-                        title: Text(eventName),
-                        subtitle: Text(
-                            'Date: ${DateFormat('dd/MM/yyyy').format(_selectedDay!)}'),
-                      ),
-                    );
-                  },
-                )),
+            Center(
+              child: Text(''' First Single tap to select date to select 
+            and then double tap to enter '''),
+            )
+            // SizedBox(
+            //     height: 300, // Set a fixed height for the ListView
+            //     child: ListView.builder(
+            //       itemCount: events[_selectedDay]?.length ?? 0,
+            //       itemBuilder: (context, index) {
+            //         String eventName = events[_selectedDay]![index];
+            //         return Card(
+            //           margin: const EdgeInsets.symmetric(
+            //               vertical: 8, horizontal: 16),
+            //           child: ListTile(
+            //             title: Text(eventName),
+            //             subtitle: Text(
+            //                 'Date: ${DateFormat('dd/MM/yyyy').format(_selectedDay!)}'),
+            //           ),
+            //         );
+            //       },
+            //     )),
           ],
         )));
   }

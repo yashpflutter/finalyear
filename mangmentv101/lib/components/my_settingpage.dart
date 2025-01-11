@@ -11,22 +11,22 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            foregroundColor: Colors.grey.shade700,
-            actionsIconTheme: IconThemeData(),
-            iconTheme: const IconThemeData(color: Colors.grey),
-            title: const Text(
-              "Setting",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-            ),
-            leading: GestureDetector(
-              child: Icon(Icons.arrow_back_ios),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.pop(context);
-              },
-            ),
-            actions: const []),
+          backgroundColor: Colors.transparent,
+          foregroundColor: Colors.grey.shade700,
+          actionsIconTheme: IconThemeData(),
+          iconTheme: const IconThemeData(color: Colors.grey),
+          title: const Text(
+            "Setting",
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          ),
+          leading: GestureDetector(
+            child: Icon(Icons.arrow_back_ios),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pop(context);
+            },
+          ),
+        ),
         body: Container(
           decoration: BoxDecoration(
               boxShadow: [BoxShadow(blurRadius: 5.0)],

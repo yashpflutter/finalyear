@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:mangmentv101/pages/login_page.dart';
+import 'package:mangmentv101/pages/loginregister/login_page.dart';
+import 'package:mangmentv101/provider/manProvider.dart';
 import 'package:mangmentv101/provider/theme/theme_provider.dart';
+import 'package:mangmentv101/provider/credentialprovider/loginprovider.dart';
 import 'package:provider/provider.dart';
 import 'pages/Startingpages/splash_screen.dart'; // Import the splash screen
-import 'package:mangmentv101/pages/Startingpages/intropage.dart';
 
 void main() {
   runApp(MultiProvider(
     providers: [
-      ChangeNotifierProvider(create: (BuildContext) => ThemeProvider())
+      ChangeNotifierProvider(create: (context) => ThemeProvider()),
+      ChangeNotifierProvider(create: (context) => LoginProvider()),
+      ChangeNotifierProvider(create: (context) => projectprovider())
     ],
     child: MyApp(),
   ));
@@ -30,7 +33,7 @@ class MyApp extends StatelessWidget {
             initialRoute: '/',
             routes: {
               '/': (context) => SplashScreen(), // Splash screen route
-              '/home': (context) => OnboardingScreen(),
+
               '/login': (context) => LoginPage(), // Example login route
             },
           );

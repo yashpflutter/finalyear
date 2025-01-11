@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mangmentv101/components/my_button.dart';
 import 'package:mangmentv101/components/my_textfield.dart';
 
-import 'package:mangmentv101/pages/regsiterpage.dart';
+import 'package:mangmentv101/pages/loginregister/regsiterpage.dart';
+import 'package:mangmentv101/provider/credentialprovider/loginprovider.dart';
 import 'package:provider/provider.dart';
 import 'package:mangmentv101/provider/theme/theme_provider.dart';
-import 'package:mangmentv101/pages/syncpage.dart';
+import 'package:mangmentv101/pages/loginregister/syncpage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -19,6 +21,7 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     super.initState();
 
+    // Provider.of(context).providealldetails();
     if (Provider.of<ThemeProvider>(context, listen: false).isDarkMode) {
     } else {
       Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
@@ -27,10 +30,9 @@ class _LoginPageState extends State<LoginPage> {
 
   final TextEditingController _emailcontroller = TextEditingController();
   final TextEditingController _pwcontroller = TextEditingController();
-  TextEditingController testadminncontroller = TextEditingController();
-
-  String level = "Employee";
-  int jobno = 2;
+  final TextEditingController _empidcontroller = TextEditingController();
+  String level = "";
+  int jobno = 0;
 
   // Function to handle radio button selection
   void handleRadioValueChange(String? value) {
@@ -38,13 +40,13 @@ class _LoginPageState extends State<LoginPage> {
       level = value!; // Set the selected value
       if (level == "Manager") {
         jobno = 1;
-        print("Team lead selected, jobno = $jobno");
+        print("Tmanager selected, jobno = $jobno");
       } else if (level == "Team lead") {
         jobno = 2;
-        print("Employee selected, jobno = $jobno");
+        print("Team lead , jobno = $jobno");
       } else if (level == "Employee") {
         jobno = 3;
-        print("Manager selected, jobno = $jobno");
+        print("employee , jobno = $jobno");
       }
     });
   }
@@ -52,6 +54,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Theme.of(context).colorScheme.primary,
       body: Center(
         child: Column(
@@ -104,21 +107,30 @@ class _LoginPageState extends State<LoginPage> {
 
             // Email TextField
             MyTextField(
+              inputfromator: [],
               keyboardtype: TextInputType.emailAddress,
               obscureText: false,
               hintText: "Email",
-              stylecolor: Colors.white,
               controller: _emailcontroller,
             ),
             const SizedBox(height: 25),
-
+            MyTextField(
+              inputfromator: [
+                FilteringTextInputFormatter.digitsOnly,
+              ],
+              keyboardtype: TextInputType.number,
+              obscureText: false,
+              hintText: "Employee Id ",
+              controller: _empidcontroller,
+            ),
+            const SizedBox(height: 25),
             // Password TextField
             MyTextField(
-              keyboardtype: TextInputType.text,
-              stylecolor: Colors.white,
+              inputfromator: [],
               obscureText: true,
               hintText: "Password",
               controller: _pwcontroller,
+              keyboardtype: TextInputType.text,
             ),
             const SizedBox(height: 25),
 
@@ -127,14 +139,23 @@ class _LoginPageState extends State<LoginPage> {
               buttoncolor: Theme.of(context).colorScheme.inversePrimary,
               text: "Login",
               onTap: () {
-                // Navigate to LoadingPage and pass the selected jobno
                 int valuetosend = jobno;
+
+                Provider.of<LoginProvider>(context, listen: false)
+                    .setUserregter(User(
+                  email: _emailcontroller.text.trim(),
+                  password: _pwcontroller.text.trim(),
+                  designation: jobno,
+                  empid: int.tryParse(_empidcontroller.text.trim()) ?? 101,
+                ));
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => LoadingPage(data: valuetosend),
                   ),
                 );
+                //}
               },
             ),
             const SizedBox(height: 25),

@@ -3,14 +3,14 @@
 
 import 'package:flutter/material.dart';
 
-class ThirdPage extends StatefulWidget {
-  const ThirdPage({super.key});
+class Manthirdpage extends StatefulWidget {
+  const Manthirdpage({super.key});
 
   @override
   _ThirdPageState createState() => _ThirdPageState();
 }
 
-class _ThirdPageState extends State<ThirdPage> {
+class _ThirdPageState extends State<Manthirdpage> {
   // Sample data for ongoing and completed projects
   final List<String> ongoingProjects = [
     'Project ABC',

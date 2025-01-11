@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
+import 'package:mangmentv101/pages/loginregister/login_page.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -14,8 +16,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(Duration(seconds: 3), () {
-      // After the splash screen, navigate to the main screen
-      Navigator.pushReplacementNamed(context, '/home');
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => LoginPage()));
     });
   }
 
