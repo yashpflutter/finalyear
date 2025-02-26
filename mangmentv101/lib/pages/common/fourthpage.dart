@@ -4,9 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 
-import 'package:mangmentv101/components/my_textfield.dart';
 import 'package:mangmentv101/provider/credentialprovider/loginprovider.dart';
-import 'package:mangmentv101/provider/theme/theme_provider.dart';
+
 import 'package:provider/provider.dart';
 
 class FourthPage extends StatefulWidget {

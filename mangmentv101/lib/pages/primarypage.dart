@@ -51,7 +51,7 @@ class _HomePageempState extends State<HomePage> {
       );
     } else {
       return TabBarView(children: [
-        ManFirstPage(),
+        Manfirstpage(),
         SecondPage(),
         Manthirdpage(),
         Mannotification(),

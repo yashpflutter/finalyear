@@ -1,7 +1,9 @@
 //there are some flause and progress page and deatil apge for submited data must be made it will be made after firebase and sqlite and file upload
 // ignore_for_file: library_private_types_in_public_api
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Manthirdpage extends StatefulWidget {
   const Manthirdpage({super.key});
@@ -22,41 +24,48 @@ class _ThirdPageState extends State<Manthirdpage> {
     'Completed Project LMN'
   ];
 
-  void navigateToDetails() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const ProgressDetailsPage()),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     double cardHeight =
         MediaQuery.of(context).size.height * 0.15; // Adjust height as needed
-
+    double cardWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              "Ongoing",
+              "Completed",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
-            Expanded(
+            SizedBox(
+              height: cardWidth * 0.3,
+              width: cardWidth,
               child: ListView.builder(
-                itemCount: ongoingProjects.length,
+                scrollDirection:
+                    Axis.horizontal, // This makes the list scroll horizontally
+                itemCount: completedProjects.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
-                    onTap: navigateToDetails,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                ProgressDetailsPage(index: index)),
+                      );
+                    },
                     child: Card(
+                      color: Theme.of(context).colorScheme.secondary,
                       child: Container(
-                        height: cardHeight,
+                        height: cardHeight * 0.9,
+                        width: cardWidth,
+                        // You may want to set a fixed width for the cards
                         padding: const EdgeInsets.all(16.0),
-                        child: Text(ongoingProjects[
-                            index]), // Use the ongoing project name
+                        child: Text(completedProjects[index]),
                       ),
                     ),
                   );
@@ -65,20 +74,33 @@ class _ThirdPageState extends State<Manthirdpage> {
             ),
             const SizedBox(height: 20),
             const Text(
-              "Completed",
+              "Ongoing",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
             Expanded(
               child: ListView.builder(
-                itemCount: completedProjects.length,
+                // This makes the list scroll horizontally
+                itemCount: ongoingProjects.length,
                 itemBuilder: (context, index) {
-                  return Card(
-                    child: Container(
-                      height: cardHeight,
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(completedProjects[
-                          index]), // Use the completed project name
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                ProgressDetailsPage(index: index)),
+                      );
+                    },
+                    child: Card(
+                      color: Theme.of(context).colorScheme.secondary,
+                      child: Container(
+                        height: cardHeight * 1,
+                        width: cardWidth,
+                        // You may want to set a fixed width for the cards
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text(ongoingProjects[index]),
+                      ),
                     ),
                   );
                 },
@@ -91,30 +113,25 @@ class _ThirdPageState extends State<Manthirdpage> {
   }
 }
 
-class ProgressDetailsPage extends StatefulWidget {
-  const ProgressDetailsPage({super.key});
 
+
+
+class ProgressDetailsPage extends StatefulWidget {
+  final int? index;
+  const ProgressDetailsPage({super.key, required this.index});
   @override
-  _ProgressDetailsPageState createState() => _ProgressDetailsPageState();
+  _ProgressDetailspageState createState() => _ProgressDetailspageState();
 }
 
-class _ProgressDetailsPageState extends State<ProgressDetailsPage> {
-  double progressValue = 0.25; // Example progress value (25%)
+class _ProgressDetailspageState extends State<ProgressDetailsPage> {
+  double progressValue = 0.25;
 
-  void navigateToProjectWorkDone() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const ProjectWorkDone()),
-    );
-  }
+
   //
 
   @override
   Widget build(BuildContext context) {
-    // final double progressSize = MediaQuery.of(context).size.width *
-    0.5; // Size of the progress indicator
-    final double buttonHeight = MediaQuery.of(context).size.height *
-        0.06; // Button height based on screen size
+    final double buttonHeight = MediaQuery.of(context).size.height * 0.06;
 
     return Scaffold(
       appBar: AppBar(
@@ -126,11 +143,10 @@ class _ProgressDetailsPageState extends State<ProgressDetailsPage> {
           children: [
             SizedBox(height: 25),
             Container(
-              color: Colors.white,
               width: 200,
               height: 200,
               child: CircularProgressIndicator(
-                value: progressValue, // Progress value (25%)
+                value: progressValue,
                 strokeWidth: 30,
                 backgroundColor: Colors.grey,
                 color: Colors.green,
@@ -139,55 +155,145 @@ class _ProgressDetailsPageState extends State<ProgressDetailsPage> {
             SizedBox(height: 25),
             Text(
               "${(progressValue * 100).toStringAsFixed(1)}%",
-              style: TextStyle(fontSize: 24), // Increased font size
+              style: TextStyle(fontSize: 24),
             ),
-            const SizedBox(height: 20),
-            const SizedBox(height: 20),
-            Row(children: [
-              Container(
-                padding: const EdgeInsets.all(3.0),
-                color: Colors.grey[300],
-                child: const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Project ABC",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20)), // Increased font size
-                    SizedBox(height: 10),
-                    Text("Description of the project.",
-                        style: TextStyle(fontSize: 16)), // Increased font size
-                  ],
-                ),
+            SingleChildScrollView(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Title",
+                      style: GoogleFonts.quicksand(
+                        fontWeight: FontWeight.w200,
+                        fontSize: 15,
+                      )),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Text("widget.title",
+                      style: GoogleFonts.quicksand(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                      )),
+                  const SizedBox(height: 20),
+                  Text("Descrption ",
+                      style: GoogleFonts.quicksand(
+                        fontWeight: FontWeight.w200,
+                        fontSize: 15,
+                      )),
+                  Container(
+                    height: 150,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      border: Border.all(width: 2),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    padding: const EdgeInsets.all(10.0),
+                    child: SingleChildScrollView(
+                      child: Text("widget.desc",
+                          style: GoogleFonts.quicksand(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 15,
+                          )),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
+                  Text("Starting Date",
+                      style: GoogleFonts.quicksand(
+                        fontWeight: FontWeight.w200,
+                        fontSize: 15,
+                      )),
+                  const SizedBox(height: 5),
+                  Text("widget.strdate",
+                      style: GoogleFonts.quicksand(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                      )),
+                  const SizedBox(height: 20),
+                  Text("Ending Date",
+                      style: GoogleFonts.quicksand(
+                        fontWeight: FontWeight.w200,
+                        fontSize: 15,
+                      )),
+                  const SizedBox(height: 5),
+                  Text("widget.enddate",
+                      style: GoogleFonts.quicksand(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                      )),
+                  const SizedBox(height: 20),
+                  Text("Team Lead Allocation",
+                      style: GoogleFonts.quicksand(
+                        fontWeight: FontWeight.w200,
+                        fontSize: 15,
+                      )),
+                  Text("widget.leadid",
+                      style: GoogleFonts.quicksand(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                      )),
+                ],
               ),
-            ]),
-            const SizedBox(height: 20),
-            Row(children: [
-              Container(
-                padding: const EdgeInsets.all(3.0),
-                color: Colors.grey[300],
-                child: const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Project ABC",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20)), // Increased font size
-                    SizedBox(height: 10),
-                    Text("Description of the project.",
-                        style: TextStyle(fontSize: 16)), // Increased font size
-                  ],
-                ),
-              ),
-            ]),
-            const SizedBox(height: 20),
-            SizedBox(
+            ),
+            Container(
               height: buttonHeight,
               width: MediaQuery.of(context).size.width *
                   0.8, // Adjust button width
               child: ElevatedButton(
-                onPressed: navigateToProjectWorkDone,
-                child: const Text("Check Work"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ProjectWorkDone()),
+                  );
+                },
+                child: Text("Check Work",
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.inversePrimary)),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Container(
+              height: buttonHeight,
+              width: MediaQuery.of(context).size.width *
+                  0.8, // Adjust button width
+              child: ElevatedButton(
+                onPressed: () {
+
+                  //Raise Issue page
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //       builder: (context) => const ProjectWorkDone()),
+                  // );
+                },
+                child: Text("Raise Issue",
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.inversePrimary)),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Container(
+              height: buttonHeight,
+              width: MediaQuery.of(context).size.width *
+                  0.8, // Adjust button width
+              child: ElevatedButton(
+                onPressed: () {
+
+                  //Accept onTap
+
+
+                  
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //       builder: (context) => const ProjectWorkDone()),
+                  // );
+                },
+                child: Text("Accept",
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.inversePrimary)),
               ),
             ),
             const SizedBox(height: 20),
@@ -198,19 +304,54 @@ class _ProgressDetailsPageState extends State<ProgressDetailsPage> {
   }
 }
 
-// Example ProjectWorkDone page
 class ProjectWorkDone extends StatelessWidget {
   const ProjectWorkDone({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final String url = "https://www.example.com";
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
         title: const Text('Completed Work'),
       ),
       body: Center(
-        child: const Text('All completed projects will be displayed here.'),
-      ),
+          child: Column(
+        children: [
+          Text(
+            "Work Done",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 20),
+          Container(
+              child: Text(
+            " Git Link/Link fro Demo /up work",
+            style: TextStyle(fontSize: 20),
+          )),
+          const SizedBox(height: 20),
+          GestureDetector(
+              onTap: () async {
+                final Uri uri = Uri.parse(url);
+                if (await canLaunchUrl(uri)) {
+                  await launchUrl(
+                    uri,
+                    mode: LaunchMode
+                        .externalApplication, // Ensures it opens in a browser
+                  );
+                } else {
+                  throw "Could not launch $url";
+                }
+              },
+              child: Text("Link",
+                  style: TextStyle(fontSize: 20, color: Colors.blue)))
+        ],
+      )),
     );
   }
 }
+
+
+
+
+
+

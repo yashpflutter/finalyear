@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mangmentv101/pages/loginregister/login_page.dart';
-import 'package:mangmentv101/provider/manProvider.dart';
 import 'package:mangmentv101/provider/theme/theme_provider.dart';
 import 'package:mangmentv101/provider/credentialprovider/loginprovider.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +10,7 @@ void main() {
     providers: [
       ChangeNotifierProvider(create: (context) => ThemeProvider()),
       ChangeNotifierProvider(create: (context) => LoginProvider()),
-      ChangeNotifierProvider(create: (context) => projectprovider())
+      // ChangeNotifierProvider(create: (context) => projectprovider())
     ],
     child: MyApp(),
   ));

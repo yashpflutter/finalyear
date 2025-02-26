@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 
 class LoginProvider extends ChangeNotifier {
@@ -15,14 +13,6 @@ class LoginProvider extends ChangeNotifier {
     allDetails.add(user); // Add the user to the list
 
     notifyListeners();
-    for (var user in allDetails) {
-      print('Name: ${user.name}');
-      print('Email: ${user.email}');
-      print('Designation: ${user.designation}');
-      print('EmpID: ${user.empid}');
-
-      print('---'); // Separator between each user
-    }
   }
 }
 

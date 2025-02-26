@@ -61,7 +61,7 @@ class _FirstPageState extends State<SecondPage> {
                     _focusedDay = focusedDay;
                   });
                 },
-                calendarStyle: const CalendarStyle(
+                calendarStyle: CalendarStyle(
                   todayDecoration: BoxDecoration(
                     color: Colors.blueAccent,
                     shape: BoxShape.circle,
@@ -70,7 +70,8 @@ class _FirstPageState extends State<SecondPage> {
                     color: Colors.deepOrange,
                     shape: BoxShape.circle,
                   ),
-                  defaultTextStyle: TextStyle(color: Colors.black),
+                  defaultTextStyle:
+                      TextStyle(color: Theme.of(context).colorScheme.primary),
                   weekendTextStyle: TextStyle(color: Colors.red),
                 ),
                 headerStyle: const HeaderStyle(

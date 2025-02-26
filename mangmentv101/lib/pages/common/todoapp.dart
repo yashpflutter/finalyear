@@ -22,6 +22,7 @@ class _todoappState extends State<todoapp> {
   bool editCreate = false;
 
   List<ToDoModelClass> cardList = [];
+
   List<ToDoModelClass> doneList = [];
 
   void submit(bool doEdit, [ToDoModelClass? toDoModelObj]) {
@@ -246,10 +247,8 @@ class _todoappState extends State<todoapp> {
         appBar: AppBar(
           title: Text(formattedDate),
           leading: IconButton(
-            icon: const Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-            ),
+            icon: Icon(Icons.arrow_back,
+                color: Theme.of(context).colorScheme.surface),
 
             onPressed: () {
               Navigator.pop(context, cardList); // Return to the previous page
@@ -283,7 +282,8 @@ class _todoappState extends State<todoapp> {
                   return Container(
                       height: 120,
                       width: 330,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.surface,
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         shape: BoxShape.rectangle,
                       ),
@@ -291,8 +291,7 @@ class _todoappState extends State<todoapp> {
                           padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                           child: Card(
                             elevation: 4.0, // Adds shadow for elevated effect
-                            color: const Color.fromARGB(255, 253, 247,
-                                255), // Background color for the card
+                            color: Theme.of(context).colorScheme.surface,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
@@ -402,7 +401,8 @@ class _todoappState extends State<todoapp> {
                   return Container(
                       height: 120,
                       width: 330,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.surface,
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         shape: BoxShape.rectangle,
                       ),
@@ -410,8 +410,9 @@ class _todoappState extends State<todoapp> {
                         padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                         child: Card(
                             elevation: 4.0, // Adds shadow for elevated effect
-                            color: const Color.fromARGB(255, 253, 247,
-                                255), // Background color for the card
+                            color: Theme.of(context)
+                                .colorScheme
+                                .surface, // Background color for the card
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
@@ -429,6 +430,9 @@ class _todoappState extends State<todoapp> {
                                           style: GoogleFonts.quicksand(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 20,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary,
                                           ),
                                           maxLines: 1, // Limit to one line
                                           overflow: TextOverflow
