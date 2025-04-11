@@ -139,90 +139,90 @@ class _FourthPageState extends State<FourthPage> {
                 ),
               ),
               const SizedBox(height: 20),
-              GestureDetector(
-                onTap: () {
-                  showModalBottomSheet(
-                      context: context,
-                      // ignore: avoid_types_as_parameter_names, non_constant_identifier_names
-                      builder: (BuildContext) {
-                        return SingleChildScrollView(
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              bottom: MediaQuery.of(context).viewInsets.bottom,
-                            ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Update password",
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.w800,
-                                    fontSize: 22,
-                                  ),
-                                ),
-                                const SizedBox(height: 20),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("Password", style: textStyle),
-                                    const SizedBox(height: 5),
-                                    TextField(
-                                      controller: controller,
-                                      decoration: textFieldDecoration,
-                                    ),
-                                    const SizedBox(height: 10),
-                                  ],
-                                ),
-                                const SizedBox(height: 10),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    Provider.of<LoginProvider>(context,
-                                            listen: false)
-                                        .setUserregter(User(
-                                            email: loginprovider.user!.email,
-                                            password: controller.text,
-                                            name: loginprovider.user!.name,
-                                            designation:
-                                                loginprovider.user!.designation,
-                                            empid: loginprovider.user!.empid));
-                                    Navigator.of(context).pop();
-                                  },
-                                  style: ButtonStyle(
-                                    backgroundColor: WidgetStatePropertyAll(
-                                        Theme.of(context)
-                                            .colorScheme
-                                            .secondary),
-                                  ),
-                                  child: Text(
-                                    "Submit",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w800,
-                                        fontSize: 22,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .inversePrimary),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      });
-                },
-                child: Container(
-                    padding: const EdgeInsets.all(5),
-                    // margin: const EdgeInsets.symmetric(horizontal: 50),
-                    decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.secondary,
-                        borderRadius: BorderRadius.circular(7.0)),
-                    child: Text("Change password",
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color:
-                                Theme.of(context).colorScheme.inversePrimary))),
-              ),
+              // GestureDetector(
+              //   onTap: () {
+              //     showModalBottomSheet(
+              //         context: context,
+              //         // ignore: avoid_types_as_parameter_names, non_constant_identifier_names
+              //         builder: (BuildContext) {
+              //           return SingleChildScrollView(
+              //             child: Padding(
+              //               padding: EdgeInsets.only(
+              //                 bottom: MediaQuery.of(context).viewInsets.bottom,
+              //               ),
+              //               child: Column(
+              //                 mainAxisSize: MainAxisSize.min,
+              //                 crossAxisAlignment: CrossAxisAlignment.center,
+              //                 children: [
+              //                   Text(
+              //                     "Update password",
+              //                     style: const TextStyle(
+              //                       fontWeight: FontWeight.w800,
+              //                       fontSize: 22,
+              //                     ),
+              //                   ),
+              //                   const SizedBox(height: 20),
+              //                   Column(
+              //                     crossAxisAlignment: CrossAxisAlignment.start,
+              //                     children: [
+              //                       Text("Password", style: textStyle),
+              //                       const SizedBox(height: 5),
+              //                       TextField(
+              //                         controller: controller,
+              //                         decoration: textFieldDecoration,
+              //                       ),
+              //                       const SizedBox(height: 10),
+              //                     ],
+              //                   ),
+              //                   const SizedBox(height: 10),
+              //                   ElevatedButton(
+              //                     onPressed: () {
+              //                       Provider.of<LoginProvider>(context,
+              //                               listen: false)
+              //                           .setUserregter(User(
+              //                               email: loginprovider.user!.email,
+              //                               password: controller.text,
+              //                               name: loginprovider.user!.name,
+              //                               designation:
+              //                                   loginprovider.user!.designation,
+              //                               empid: loginprovider.user!.empid));
+              //                       Navigator.of(context).pop();
+              //                     },
+              //                     style: ButtonStyle(
+              //                       backgroundColor: WidgetStatePropertyAll(
+              //                           Theme.of(context)
+              //                               .colorScheme
+              //                               .secondary),
+              //                     ),
+              //                     child: Text(
+              //                       "Submit",
+              //                       style: TextStyle(
+              //                           fontWeight: FontWeight.w800,
+              //                           fontSize: 22,
+              //                           color: Theme.of(context)
+              //                               .colorScheme
+              //                               .inversePrimary),
+              //                     ),
+              //                   ),
+              //                 ],
+              //               ),
+              //             ),
+              //           );
+              //         });
+              //   },
+              //   child: Container(
+              //       padding: const EdgeInsets.all(5),
+              //       // margin: const EdgeInsets.symmetric(horizontal: 50),
+              //       decoration: BoxDecoration(
+              //           color: Theme.of(context).colorScheme.secondary,
+              //           borderRadius: BorderRadius.circular(7.0)),
+              //       child: Text("Change password",
+              //           style: TextStyle(
+              //               fontSize: 20,
+              //               fontWeight: FontWeight.bold,
+              //               color:
+              //                   Theme.of(context).colorScheme.inversePrimary))),
+              // ),
             ],
           ),
         ]),

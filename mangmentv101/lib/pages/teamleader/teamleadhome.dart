@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mangmentv101/pages/teamleader/assignprojectemp.dart';
 
 class TLFirstPage extends StatefulWidget {
   const TLFirstPage({super.key});
@@ -23,7 +24,7 @@ class _TLFirstPageState extends State<TLFirstPage> {
                   width: 20,
                 ),
                 const Text(
-                  'Project Assigned  ',
+                  'Project Assigned 2 ',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 const Spacer(),
@@ -31,6 +32,10 @@ class _TLFirstPageState extends State<TLFirstPage> {
                   height: 24,
                   width: 20,
                 ),
+                Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8.0),
+                    child: FloatingActionButton(
+                        onPressed: () {}, child: Icon(Icons.add)))
               ],
             ),
           ),
@@ -86,7 +91,13 @@ class _TLFirstPageState extends State<TLFirstPage> {
                                                         color: Theme.of(context)
                                                             .colorScheme
                                                             .inversePrimary),
-                                                    onTap: () {},
+                                                    onTap: () {
+                                                      Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  assignprojecttoemp()));
+                                                    },
                                                   ),
                                                   const SizedBox(width: 12),
                                                   GestureDetector(

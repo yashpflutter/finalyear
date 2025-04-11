@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mangmentv101/components/aboutpage.dart';
 import 'package:mangmentv101/components/my_settingpage.dart';
 import 'package:mangmentv101/pages/loginregister/login_page.dart';
 import 'package:mangmentv101/pages/primarypage.dart';
@@ -97,6 +98,31 @@ class MyDrawer extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (context) => SettingsPage()));
+                  },
+                ),
+                GestureDetector(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        boxShadow: [BoxShadow(blurRadius: 5.0)],
+                        color: Theme.of(context).colorScheme.secondary,
+                        borderRadius: BorderRadius.circular(12)),
+                    margin: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(16),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.group),
+                        SizedBox(width: 5.0),
+                        Text("About Us ",
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w600,
+                            )),
+                      ],
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => aboutpage()));
                   },
                 ),
               ],

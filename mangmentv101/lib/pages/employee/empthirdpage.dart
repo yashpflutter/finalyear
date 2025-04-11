@@ -173,7 +173,7 @@ class _EmpthirdpageState extends State<Empthirdpage> {
                                 color: Color.fromARGB(255, 0, 0, 0),
                               )),
                           child: Center(child: Text('COMPLETED')),
-                        )))
+                        ))),
               ],
             ),
             const Text('LIST '), // To separate the two lists
@@ -181,7 +181,7 @@ class _EmpthirdpageState extends State<Empthirdpage> {
               child: ListView.builder(
                 itemCount: 10, // Number of items
                 itemBuilder: (context, index) {
-                  bool taskistrue = true; //this will come on run time
+                  bool taskistrue = false; //this will come on run time
                   //here you can write a logic for the rsortting thema all for all list view builder
                   return sendlisttile(index, taskistrue);
                 },

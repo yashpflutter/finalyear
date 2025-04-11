@@ -20,7 +20,7 @@ class _EmpFirstPageState extends State<EmpFirstPage> {
             }));
           },
           child: Container(
-              padding: EdgeInsets.all(9.0),
+              padding: EdgeInsets.all(8.0),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all()),
@@ -117,7 +117,7 @@ class _EmpFirstPageState extends State<EmpFirstPage> {
                       });
                     },
                     child: Container(
-                      height: 100,
+                      height: 50,
                       width: 170,
                       decoration: BoxDecoration(
                           borderRadius:
@@ -144,7 +144,7 @@ class _EmpFirstPageState extends State<EmpFirstPage> {
                         });
                       },
                       child: Container(
-                        height: 100,
+                        height: 50,
                         width: 170,
                         decoration: BoxDecoration(
                             borderRadius:

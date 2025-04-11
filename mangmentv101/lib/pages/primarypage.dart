@@ -15,6 +15,8 @@ import 'package:mangmentv101/pages/teamleader/teamleadthirdpage.dart';
 import 'package:mangmentv101/provider/credentialprovider/loginprovider.dart';
 import 'package:provider/provider.dart';
 
+import 'package:url_launcher/url_launcher.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -88,24 +90,31 @@ class _HomePageempState extends State<HomePage> {
                 ]),
           ),
           drawer: MyDrawer(),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              // Define the action here
-            },
-            tooltip: 'Add Item',
-            elevation: 6.0, // Elevation for shadow
-            backgroundColor: Theme.of(context)
-                .colorScheme
-                .primary, // Custom background color
-            foregroundColor: Theme.of(context)
-                .colorScheme
-                .inversePrimary, // Custom icon color
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15), // Custom shape
-            ),
-            child: const Icon(Icons.chat_bubble_outline_outlined,
-                color: Colors.black),
-          ),
+          // floatingActionButton: FloatingActionButton(
+          //   onPressed: () async {
+          //     var url = 'chatapp://open';
+          //     if (await canLaunchUrl(Uri.parse(url))) {
+          //       await launchUrl(Uri.parse(url));
+          //     } else {
+          //       ScaffoldMessenger.of(context).showSnackBar(
+          //           SnackBar(content: Text("ChatApp is not installed")));
+          //     }
+          //     // Define the action here
+          //   },
+          //   tooltip: 'Open Chat',
+          //   elevation: 6.0, // Elevation for shadow
+          //   backgroundColor: Theme.of(context)
+          //       .colorScheme
+          //       .primary, // Custom background color
+          //   foregroundColor: Theme.of(context)
+          //       .colorScheme
+          //       .inversePrimary, // Custom icon color
+          //   shape: RoundedRectangleBorder(
+          //     borderRadius: BorderRadius.circular(15), // Custom shape
+          //   ),
+          //   child: const Icon(Icons.chat_bubble_outline_outlined,
+          //       color: Colors.black),
+          // ),
           body: changethetabpage(),
         ));
   }
