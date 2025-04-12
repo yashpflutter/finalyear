@@ -1,0 +1,2 @@
+E:/Project worrk/Final Year project/mangmentv102/android/app/.cxx/Debug/1k6y5f52/x86_64/CMakeFiles/edit_cache.dir
+E:/Project worrk/Final Year project/mangmentv102/android/app/.cxx/Debug/1k6y5f52/x86_64/CMakeFiles/rebuild_cache.dir
